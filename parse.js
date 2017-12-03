@@ -12,7 +12,7 @@ function parse(text) {
 
   function next(c) {
     if (c && ch !== c) {
-      throw SyntaxError(`expected current char was \`${c}\`, but got ${ch}`);
+      throw SyntaxError(`expected current char was \`${c}\`, but got ${ch} at position ${position}`);
     }
 
     position += 1;
@@ -45,7 +45,7 @@ function parse(text) {
       }
     }
 
-    throw new SyntaxError('fuck you');
+    throw new SyntaxError('Unexpected token while parsing string at position ' + position);
   }
 
   function object() {
@@ -59,6 +59,7 @@ function parse(text) {
         next('}');
         return Object.create(null);
       }
+
       while (ch) {
         key = string();
         skip();
@@ -77,6 +78,53 @@ function parse(text) {
 
     }
 
+  }
+
+  function array() {
+    const array = [];
+    if (ch === '[') {
+      next('[');
+      skip();
+
+      if (ch === ']') { // terminate
+        next(']');
+        return array;
+      }
+
+      while(ch) {
+        array.push(value());
+        skip();
+        console.log(ch);
+
+        if (ch === ']') {
+          next(']');
+          return array;
+        }
+        next(',');
+        skip();
+      }
+    }
+  }
+
+  function keyword() {
+    const keywords = [
+      'true',
+      'false',
+      'null',
+    ];
+    switch (ch) {
+      case 't':
+        keywords[0].split('').forEach(char => next(char));
+        return true;
+      case 'f':
+        keywords[1].split('').forEach(char => next(char));
+        return false;
+      case 'n':
+        keywords[2].split('').forEach(char => next(char));
+        return null;
+      default:
+        throw new SyntaxError('unexpected token at position ' + position);
+    }
   }
 
   function number() {
@@ -108,8 +156,11 @@ function parse(text) {
         return string();
       case '-':
         return number();
+      case '[':
+        console.log('array')
+        return array();
       default:
-        return ch >= '0' && ch <= '9' ? number() : null;
+        return ch >= '0' && ch <= '9' ? number() : keyword();
     }
   }
 
@@ -118,4 +169,4 @@ function parse(text) {
   return result;
 }
 
-console.log(parse('{"123":1, "name": "kalan"}'));
+console.log(parse('{"123": [1,   2, 3]}'));
