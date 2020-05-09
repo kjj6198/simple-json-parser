@@ -1,0 +1,14 @@
+{
+  "people": {
+    "name": {
+      "id": "foo",
+      "value": "bar"
+    },
+    "age": {
+      "year": "2015"
+    },
+    "c": {
+      "year": "2015"
+    }
+  }
+}

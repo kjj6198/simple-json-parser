@@ -1,0 +1,7 @@
+{
+  "people": ["Kalan", "denny", "hook"],
+  "array-with-object": [
+    { "name": "kalan", "age": 20 },
+    { "name": "kai", "age": 25 }
+  ]
+}
