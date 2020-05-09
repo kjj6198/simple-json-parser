@@ -1,4 +1,4 @@
-## simple-json-parser
+## simple-json-parser ![JSON parse](https://github.com/kjj6198/simple-json-parser/workflows/JSON%20parse/badge.svg?branch=master)
 
 Simple recursive descent JSON parser.
 
