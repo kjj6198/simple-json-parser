@@ -4,7 +4,7 @@
   "description": "Another JSON Parser by me",
   "main": "parse.js",
   "scripts": {
-    "test": "mocha test.js",
+    "test": "mocha test.js -- --grep 'string|number|keyword|flat'",
     "test:watch": "mocha test.js --watch"
   },
   "repository": {
