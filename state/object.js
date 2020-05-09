@@ -38,7 +38,7 @@ function object(parser) {
 
       parser.skip();
       parser.next(":");
-      obj[key] = value(parser);
+      obj[key] = string(parser);
       parser.skip();
       if (parser.current() === "}") {
         parser.next("}");
