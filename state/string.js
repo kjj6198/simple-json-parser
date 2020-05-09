@@ -1,6 +1,6 @@
 function string(parser) {
   parser.next('"');
-  parser.skip();
+
   if (parser.next('"')) {
     throw new Error("JSON key is empty string, fuck you.");
   }
