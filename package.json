@@ -1,0 +1,25 @@
+{
+  "name": "json-parser",
+  "version": "1.0.0",
+  "description": "Another JSON Parser by me",
+  "main": "parse.js",
+  "scripts": {
+    "test": "mocha test.js",
+    "test:watch": "mocha test.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kjj6198/simple-json-parser.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kjj6198/simple-json-parser/issues"
+  },
+  "homepage": "https://github.com/kjj6198/simple-json-parser#readme",
+  "dependencies": {
+    "assert": "^2.0.0",
+    "mocha": "^7.1.2"
+  }
+}

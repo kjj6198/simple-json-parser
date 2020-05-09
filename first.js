@@ -1,10 +1,4 @@
-const escape = {
-  '"': '"',
-  t: "\t",
-  r: "\r",
-  "\\": "\\",
-};
-
+// first JSON parser
 function parse(text) {
   let ch = " ";
   let position = 0;
@@ -170,5 +164,3 @@ function parse(text) {
   let result = value();
   return result;
 }
-
-console.log(parse('{"123": [1,adf   2, 3]}'));
