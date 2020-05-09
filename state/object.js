@@ -13,8 +13,6 @@ function value(parser) {
     case "-":
       return number(parser);
     case "[":
-    // console.log("array");
-    // return array();
     default:
       return ch >= "0" && ch <= "9" ? number(parser) : keyword(parser);
   }
