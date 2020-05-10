@@ -20,10 +20,10 @@ Simple recursive descent JSON parser.
 - [x] primitive: `null`, `true`, `false`
 - [x] trim white space
 - [x] array
-- [ ] special string (\u)
+- [x] special string (\u)
 
 ## Custom feature
 
 - [ ] prefix `@`
 - [ ] builtin formatter
-- [ ] template
+- [x] template `$name$`
