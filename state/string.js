@@ -1,3 +1,10 @@
+const escape = {
+  '"': '"',
+  t: "\t",
+  r: "\r",
+  "\\": "\\",
+};
+
 function string(parser) {
   parser.next('"');
   parser.skip();
@@ -6,14 +13,22 @@ function string(parser) {
     throw new Error("JSON key is empty string, fuck you.");
   }
 
-  let key = "";
+  let str = "";
   let curr = "";
 
   while (((curr = parser.current()), curr)) {
     if (parser.next('"')) {
-      return key;
+      return str;
+    } else if (curr === "\\") {
+      parser.index += 1;
+      const escapeCh = parser.current();
+      if (escape[escapeCh]) {
+        str += escape[escapeCh];
+      }
+    } else {
+      str += curr;
     }
-    key += curr;
+
     parser.index += 1;
   }
 }
