@@ -1,6 +1,7 @@
 const string = require("./string");
 const number = require("./number");
 const keyword = require("./keyword");
+const template = require("./template");
 
 function array(parser) {
   const arr = [];
@@ -36,6 +37,8 @@ function value(parser) {
   const ch = parser.current();
 
   switch (ch) {
+    case "$":
+      return template(parser);
     case "{":
       return object(parser);
     case '"':

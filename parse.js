@@ -8,7 +8,7 @@ const escape = {
 };
 
 class Parser {
-  constructor(raw) {
+  constructor(raw, variables) {
     this.raw = raw;
     // position
     this.loc = {
@@ -16,6 +16,7 @@ class Parser {
       row: 0,
     };
     this.index = 0;
+    this.variables = variables;
   }
 
   remaining() {

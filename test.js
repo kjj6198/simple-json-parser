@@ -28,10 +28,26 @@ describe("JSON parser", () => {
           encoding: "utf8",
         })
         .toString();
-      const actual = new Parser(sample.toString()).parse();
-      it(dir, () => {
-        assert.deepEqual(actual, JSON.parse(expected));
-      });
+      if (dir.includes("template")) {
+        const variables = JSON.parse(
+          fs
+            .readFileSync(`test/${dir}/variables.json`, {
+              encoding: "utf8",
+            })
+            .toString()
+        );
+
+        const actual = new Parser(sample.toString(), variables).parse();
+
+        it(dir, () => {
+          assert.deepEqual(actual, JSON.parse(expected));
+        });
+      } else {
+        const actual = new Parser(sample.toString()).parse();
+        it(dir, () => {
+          assert.deepEqual(actual, JSON.parse(expected));
+        });
+      }
     }
   });
 });
