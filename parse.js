@@ -11,6 +11,10 @@ class Parser {
   constructor(raw) {
     this.raw = raw;
     // position
+    this.loc = {
+      col: 0,
+      row: 0,
+    };
     this.index = 0;
   }
 
@@ -34,6 +38,12 @@ class Parser {
 
   skip() {
     while (this.raw[this.index] <= " ") {
+      if (this.raw[this.index] === "\n") {
+        this.loc.col += 1;
+        this.loc.row = 0;
+      }
+
+      this.loc.row += 1;
       this.index += 1;
     }
   }
@@ -52,3 +62,5 @@ class Parser {
 }
 
 module.exports = Parser;
+
+new Parser(`{"people": ["Kalan", "denny", "hook"]}`).parse();
