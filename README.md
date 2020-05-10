@@ -19,7 +19,7 @@ Simple recursive descent JSON parser.
 - [x] empty key warning
 - [x] primitive: `null`, `true`, `false`
 - [x] trim white space
-- [ ] array
+- [x] array
 - [ ] special string (\u)
 
 ## Custom feature
